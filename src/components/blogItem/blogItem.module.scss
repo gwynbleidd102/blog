@@ -1,0 +1,146 @@
+.blogItem {
+  position: relative;
+  width: 941px;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #fff;
+  margin-bottom: 26px;
+  box-shadow: 2px 2px 5px 0px rgba(34, 60, 80, 0.2);
+
+  &__container {
+    width: 682px;
+  }
+
+  &__block {
+    display: flex;
+    margin-bottom: 6px;
+  }
+
+  &__title {
+    height: 28px;
+    color: #1890ff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-right: 13px;
+    overflow: hidden;
+  }
+
+  &__heart {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  &__favorited {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 27px;
+  }
+
+  &__tagList {
+    height: 22px;
+    margin-bottom: 7px;
+    overflow: hidden;
+  }
+
+  &__tagList_list {
+    display: flex;
+    list-style-type: none;
+  }
+
+  &__tagList_list-item {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 2px 5px;
+    margin-right: 8px;
+  }
+
+  &__description {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &_body {
+    height: 680px;
+    overflow: hidden;
+  }
+
+  &__author {
+    position: absolute;
+    top: 17px;
+    right: 14px;
+    display: flex;
+  }
+
+  &__case {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__name {
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: -5px;
+  }
+
+  &__created {
+    color: var(--text-color-secondary, rgba(0, 0, 0, 0.5));
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &__avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin-left: 12px;
+  }
+
+  &__groupButton {
+    position: absolute;
+    top: 90px;
+    right: 14px;
+  }
+
+  &__btn {
+    padding: 6px 17px;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__delete {
+    height: 31px;
+    border: 1px solid #f5222d;
+    color: #f5222d;
+    margin-right: 12px;
+  }
+
+  &__delete:hover {
+    color: #fff;
+    background-color: #f5222d;
+  }
+
+  &__edit {
+    line-height: 16px;
+    display: inline-block;
+    height: 31px;
+    text-decoration: none;
+    border: 1px solid #52c41a;
+    color: #52c41a;
+  }
+
+  &__edit:hover {
+    color: #fff;
+    background-color: #52c41a;
+  }
+}

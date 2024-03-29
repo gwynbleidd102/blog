@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 22px;
+  background-color: #fff;
+  margin-bottom: 26px;
+
+  &__link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  & img {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+.btn {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  padding: 8px 18px;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.signInBtn {
+  color: rgba(0, 0, 0, 0.85);
+  margin-right: 19px;
+  border: none;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #7a7a7a;
+    margin-right: 19px;
+    border: none;
+  }
+}
+
+.signUpBtn {
+  color: #52c41a;
+  border: 2px solid #52c41a;
+
+  &:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #52c41a;
+  }
+}
+
+.logOutBtn {
+  color: rgba(0, 0, 0, 0.75);
+  border: 2px solid rgba(0, 0, 0, 0.75);
+
+  &:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 2px solid #ffffff;
+  }
+}
+
+.profileBtn {
+  padding: 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    margin-right: 13px;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  &__avatar {
+    margin-right: 27px;
+  }
+}
+
+.createBtn {
+  margin-right: 27px;
+  color: #52c41a;
+  border: 2px solid #52c41a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 6px 10px;
+
+  &:hover {
+    color: #ffffff;
+    background-color: #52c41a;
+    border: 2px solid #ffffff;
+  }
+}

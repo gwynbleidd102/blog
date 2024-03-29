@@ -1,0 +1,19 @@
+.error {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  min-width: 320px;
+
+  &__img {
+    margin-bottom: 1rem;
+    width: 200px;
+  }
+
+  &__title {
+    font-family: 'OpenSans Medium';
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
