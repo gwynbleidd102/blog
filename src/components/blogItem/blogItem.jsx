@@ -25,14 +25,18 @@ function BlogItem({
   handleToggleFavorite,
 }) {
   const [heartsCount, setHeartsCount] = useState(favoritesCount)
+  const token = localStorage.getItem('token')
+  const isLoggedIn = token ? true : false
 
   const handleToggle = () => {
-    if (favorited) {
-      setHeartsCount((heartsCount) => heartsCount - 1)
-    } else {
-      setHeartsCount((heartsCount) => heartsCount + 1)
+    if (isLoggedIn) {
+      if (favorited) {
+        setHeartsCount((heartsCount) => heartsCount - 1)
+      } else {
+        setHeartsCount((heartsCount) => heartsCount + 1)
+      }
+      handleToggleFavorite()
     }
-    handleToggleFavorite()
   }
 
   const blogList = tagList.map((tag, index) => {
