@@ -10,7 +10,7 @@ const CreateArticle = ({ dataType }) => {
   const { id } = useParams()
   const token = localStorage.getItem('token')
   const isLoggedIn = token ? true : false
-  const history = useHistory() // Получаем объект истории
+  const history = useHistory()
 
   const { createArticle, updateArticle } = BlogService()
 
