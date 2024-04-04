@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { Redirect } from 'react-router-dom'
 
@@ -9,23 +10,25 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
     handleSubmit,
     formState: { errors },
   } = useForm()
-
-  const title = dataType === 'new-article' ? 'Create new article' : 'Edit article'
+  const { blog } = useSelector((state) => state.blog)
+  const formTitle = dataType === 'new-article' ? 'Create new article' : 'Edit article'
 
   return (
     <div className={styles.article}>
       {!isLoggedIn && <Redirect to="/sign-in" />}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={styles['article__title']}>{title}</h1>
+        <h1 className={styles['article__title']}>{formTitle}</h1>
 
         <label className={styles['article__label']} htmlFor="title">
           Title
         </label>
+        {/* <label>{blog.slug}</label> */}
         <input
           className={styles['article__input']}
           type="text"
           id="title"
           placeholder="Title"
+          defaultValue={formTitle === 'Edit article' ? blog.title : ''}
           {...register('title', { required: true })}
         />
         {errors.title && (
@@ -42,6 +45,7 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
           type="text"
           id="description"
           placeholder="Short description"
+          defaultValue={formTitle === 'Edit article' ? blog.description : ''}
           {...register('description', { required: true })}
         />
         {errors.description && (
@@ -50,17 +54,18 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
           </div>
         )}
 
-        <label className={styles['article__label']} htmlFor="text">
+        <label className={styles['article__label']} htmlFor="body">
           Text
         </label>
         <textarea
           className={styles['article__textarea']}
           type="text"
-          id="text"
+          id="body"
           placeholder="Text"
-          {...register('text', { required: true })}
+          defaultValue={formTitle === 'Edit article' ? blog.body : ''}
+          {...register('body', { required: true })}
         />
-        {errors.text && (
+        {errors.body && (
           <div>
             <span className={styles['article__span']}>Поле Text обязательно для заполнения</span>
           </div>
@@ -75,6 +80,7 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
                 type="text"
                 placeholder="Tag"
                 value={tag}
+                // defaultValue={formTitle === 'Edit article' ? blog.tagList : ''}
                 onChange={(elem) => handleTagChange(index, elem.target.value)}
               />
               <button
@@ -90,6 +96,7 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
         <button className={`${styles['article__btn']} ${styles['btn__addTag']}`} onClick={handleAddTag}>
           Add tag
         </button>
+
         <button className={`${styles['article__btn']} ${styles['btn__submit']}`} type="submit">
           Send
         </button>

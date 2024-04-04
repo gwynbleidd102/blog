@@ -1,16 +1,19 @@
+import { useSelector } from 'react-redux'
 import React, { useState } from 'react'
-import { Redirect, useParams, useHistory } from 'react-router-dom'
+import { Redirect, useParams, useHistory, useLocation } from 'react-router-dom'
 
 import BlogService from '../../services/blog-services'
 import Article from '../article/article'
 
 const CreateArticle = ({ dataType }) => {
   const [tags, setTags] = useState([])
-  const [createdArticle, setCreatedArticle] = useState(false)
   const { id } = useParams()
   const token = localStorage.getItem('token')
   const isLoggedIn = token ? true : false
   const history = useHistory()
+  // const { blog } = useSelector((state) => state.blog)
+
+  // const location = useLocation()
 
   const { createArticle, updateArticle } = BlogService()
 
@@ -34,9 +37,9 @@ const CreateArticle = ({ dataType }) => {
         result = await updateArticle(json, token, id)
       }
       // console.log(result)
-      setCreatedArticle(true)
       if (result?.article?.slug) {
-        history.push(`blog/${result.article.slug}`)
+        history.push(`/blog/${result.article.slug}`)
+        // console.log(location)
       }
     } catch (error) {
       console.log(error)
@@ -63,7 +66,6 @@ const CreateArticle = ({ dataType }) => {
 
   return (
     <>
-      {/* {createdArticle && <Redirect to="/" />} */}
       {!isLoggedIn && <Redirect to="/sign-in" />}
       <Article
         isLoggedIn={isLoggedIn}
