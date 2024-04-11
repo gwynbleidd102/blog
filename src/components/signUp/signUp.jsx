@@ -160,7 +160,6 @@ const SignUp = () => {
 
   return (
     <>
-      {/* {isLoggedIn && <Redirect to="/" />} */}
       {!isLoggedIn && signedUp && <Redirect to="/sign-in" />}
       {content}
     </>

@@ -11,9 +11,6 @@ const CreateArticle = ({ dataType }) => {
   const token = localStorage.getItem('token')
   const isLoggedIn = token ? true : false
   const history = useHistory()
-  // const { blog } = useSelector((state) => state.blog)
-
-  // const location = useLocation()
 
   const { createArticle, updateArticle } = BlogService()
 
