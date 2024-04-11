@@ -11,7 +11,6 @@ import styles from './signUp.module.scss'
 
 const SignUp = () => {
   const [signedUp, setSignedUp] = useState(false)
-  // const token = useSelector((state) => state.user.token)
   const { token, error, loading } = useSelector((state) => state.user)
   const isLoggedIn = token ? true : false
 

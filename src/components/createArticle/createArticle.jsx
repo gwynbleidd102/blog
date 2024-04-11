@@ -36,10 +36,8 @@ const CreateArticle = ({ dataType }) => {
       } else {
         result = await updateArticle(json, token, id)
       }
-      // console.log(result)
       if (result?.article?.slug) {
         history.push(`/blog/${result.article.slug}`)
-        // console.log(location)
       }
     } catch (error) {
       console.log(error)

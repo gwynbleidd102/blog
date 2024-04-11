@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { Redirect } from 'react-router-dom'
 
+import { blogSelector } from '../selectors/selectors'
+
 import styles from './article.module.scss'
 
 const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, handleTagChange, dataType }) => {
@@ -10,7 +12,7 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const { blog } = useSelector((state) => state.blog)
+  const { blog } = useSelector(blogSelector)
   const formTitle = dataType === 'new-article' ? 'Create new article' : 'Edit article'
 
   return (
@@ -22,7 +24,6 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
         <label className={styles['article__label']} htmlFor="title">
           Title
         </label>
-        {/* <label>{blog.slug}</label> */}
         <input
           className={styles['article__input']}
           type="text"
@@ -80,7 +81,6 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
                 type="text"
                 placeholder="Tag"
                 value={tag}
-                // defaultValue={formTitle === 'Edit article' ? blog.tagList : ''}
                 onChange={(elem) => handleTagChange(index, elem.target.value)}
               />
               <button
