@@ -13,6 +13,7 @@ const SignUp = () => {
   const [signedUp, setSignedUp] = useState(false)
   const { token, error, loading } = useSelector((state) => state.user)
   const isLoggedIn = token ? true : false
+  const [incorrectRegData, setIncorrectRegData] = useState(false)
 
   const { signUp } = BlogService()
 
@@ -23,6 +24,19 @@ const SignUp = () => {
     watch,
   } = useForm()
 
+  // const onSubmit = async (data) => {
+  //   const user = {
+  //     user: {
+  //       username: data.name,
+  //       email: data.email,
+  //       password: data.password,
+  //     },
+  //   }
+
+  //   const json = JSON.stringify(user)
+  //   await signUp(json)
+  //   setSignedUp(true)
+  // }
   const onSubmit = async (data) => {
     const user = {
       user: {
@@ -33,9 +47,21 @@ const SignUp = () => {
     }
 
     const json = JSON.stringify(user)
-    await signUp(json)
-    setSignedUp(true)
+
+    try {
+      await signUp(json)
+      setSignedUp(true)
+    } catch (error) {
+      console.error('Ошибка при регистрации пользователя', error.message)
+      setIncorrectRegData(true)
+    }
   }
+
+  const incorrectRegDataMessage = incorrectRegData ? (
+    <div>
+      <span>Ошибка регистрации, проверьте введённые данные</span>
+    </div>
+  ) : null
 
   const name = register('name', {
     required: true,
@@ -144,6 +170,7 @@ const SignUp = () => {
           <span>You must agree to the processing of your personal information</span>
         </div>
       )}
+      {incorrectRegDataMessage}
 
       <button type="submit">Create</button>
 
