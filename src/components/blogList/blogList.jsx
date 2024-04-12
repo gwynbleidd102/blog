@@ -19,7 +19,7 @@ function BlogList() {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  const [currentPage, setCurrentPage] = useState(1)
+  // const [currentPage, setCurrentPage] = useState(1)
 
   const { getArticles } = BlogService()
 
