@@ -1,12 +1,14 @@
+import { useEffect } from 'react'
+import { Redirect, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { Redirect } from 'react-router-dom'
 
 import { blogSelector } from '../selectors/selectors'
 
 import styles from './article.module.scss'
 
 const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, handleTagChange, dataType }) => {
+  const history = useHistory()
   const {
     register,
     handleSubmit,
@@ -14,6 +16,12 @@ const Article = ({ isLoggedIn, onSubmit, tags, handleAddTag, handleDeleteTag, ha
   } = useForm()
   const { blog } = useSelector(blogSelector)
   const formTitle = dataType === 'new-article' ? 'Create new article' : 'Edit article'
+
+  useEffect(() => {
+    if (blog && Object.keys(blog).length === 0 && formTitle === 'Edit article') {
+      history.push('/')
+    }
+  }, [blog])
 
   return (
     <div className={styles.article}>

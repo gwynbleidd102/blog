@@ -24,19 +24,6 @@ const SignUp = () => {
     watch,
   } = useForm()
 
-  // const onSubmit = async (data) => {
-  //   const user = {
-  //     user: {
-  //       username: data.name,
-  //       email: data.email,
-  //       password: data.password,
-  //     },
-  //   }
-
-  //   const json = JSON.stringify(user)
-  //   await signUp(json)
-  //   setSignedUp(true)
-  // }
   const onSubmit = async (data) => {
     const user = {
       user: {

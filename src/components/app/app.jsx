@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { StrictMode, useEffect } from 'react'
 
 import ErrorBoundary from '../error-boundary'
 import Header from '../header'
@@ -30,34 +30,39 @@ function App() {
 
   return (
     <Router>
-      <ErrorBoundary>
-        <div className={styles.app}>
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <BlogList />
-            </Route>
-            <Route exact path="/blog/:id">
-              <Blog />
-            </Route>
-            <Route exact path="/sign-up">
-              <SignUp />
-            </Route>
-            <Route exact path="/sign-in">
-              <SignIn />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/new-article">
-              <CreateArticle dataType="new-article" />
-            </Route>
-            <Route exact path="/edit-article/:id">
-              <CreateArticle dataType="edit-article" />
-            </Route>
-          </Switch>
-        </div>
-      </ErrorBoundary>
+      <StrictMode>
+        <ErrorBoundary>
+          <div className={styles.app}>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <BlogList />
+              </Route>
+              <Route exact path="/page/:id">
+                <BlogList />
+              </Route>
+              <Route exact path="/blog/:id">
+                <Blog />
+              </Route>
+              <Route exact path="/sign-up">
+                <SignUp />
+              </Route>
+              <Route exact path="/sign-in">
+                <SignIn />
+              </Route>
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+              <Route exact path="/new-article">
+                <CreateArticle dataType="new-article" />
+              </Route>
+              <Route exact path="/edit-article/:id">
+                <CreateArticle dataType="edit-article" />
+              </Route>
+            </Switch>
+          </div>
+        </ErrorBoundary>
+      </StrictMode>
     </Router>
   )
 }

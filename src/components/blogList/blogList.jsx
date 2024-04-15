@@ -12,7 +12,8 @@ import PagePagination from '../pagination'
 import styles from './blogList.module.scss'
 
 function BlogList() {
-  const [offset, setOffset] = useState(0)
+  const { id } = useParams()
+  const idAsNumber = id ? parseInt(id, 10) : 1
   const [pages, sePages] = useState(null)
   const { blogs, error, loading } = useSelector((state) => state.blogs)
   const token = useSelector((state) => state.user.token)
@@ -24,21 +25,13 @@ function BlogList() {
   const { getArticles } = BlogService()
 
   useEffect(() => {
-    const page = new URLSearchParams(location.search).get('page')
-    if (page) {
-      setOffset((page - 1) * 5)
-      // setCurrentPage(page)
-    }
-  }, [location])
-
-  useEffect(() => {
     updateBlogs()
-  }, [offset])
+  }, [id])
 
   const updateBlogs = async () => {
     dispatch(addBlogsStarted())
     try {
-      const res = await getArticles(offset, token)
+      const res = await getArticles((idAsNumber - 1) * 5, token)
       onBlogsLoaded(res.articles)
       sePages(Math.ceil(res.articlesCount / 5))
     } catch (error) {
@@ -51,7 +44,7 @@ function BlogList() {
   }
 
   const nextPage = (page) => {
-    history.push(`?page=${page.toString()}`)
+    history.push(`/page/${page}`)
   }
 
   const elements = blogs.map((blog) => {
@@ -67,7 +60,7 @@ function BlogList() {
       <div className={styles.blogList}>
         {content}
         <div className={styles.pagination}>
-          <PagePagination nextPage={nextPage} pages={pages} />
+          <PagePagination nextPage={nextPage} current={idAsNumber} pages={pages} />
         </div>
       </div>
     </>

@@ -31,7 +31,7 @@ function BlogListItem({
   const formattedDate = format(new Date(updatedAt), 'MMMM d, yyyy')
 
   return (
-    <Link className={styles['blogListItem__link']} to={`blog/${slug}`}>
+    <Link className={styles['blogListItem__link']} to={`/blog/${slug}`}>
       <section className={styles.blogListItem}>
         <div className={styles['blogListItem__container']}>
           <div className={styles['blogListItem__block']}>

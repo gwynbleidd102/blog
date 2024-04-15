@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
 import { Pagination } from 'antd'
 
-const PagePagination = ({ nextPage, pages }) => {
-  const [current, setCurrent] = useState(1)
-
+const PagePagination = ({ nextPage, current, pages }) => {
   const onChange = (page) => {
-    setCurrent(page)
     nextPage(page)
   }
 
