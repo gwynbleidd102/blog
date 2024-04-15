@@ -107,7 +107,6 @@ function Blog() {
 
   return (
     <>
-      {/* {!isLoggedIn && <Redirect to="/sign-in" />} */}
       {blogIsDelete && <Redirect to="/" />}
       <div className={styles.blog}>{content}</div>
     </>

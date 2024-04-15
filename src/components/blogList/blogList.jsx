@@ -19,8 +19,6 @@ function BlogList() {
   const token = useSelector((state) => state.user.token)
   const dispatch = useDispatch()
   const history = useHistory()
-  const location = useLocation()
-  // const [currentPage, setCurrentPage] = useState(1)
 
   const { getArticles } = BlogService()
 
